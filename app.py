@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template,request,abort
+from lxml import etree
 import requests
+
 app = Flask(__name__)	
 
 
