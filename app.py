@@ -19,9 +19,9 @@ def temperatura():
     if r.status_code == 200:
 	    doc = etree.fromstring(r.text.encode ('utf-8'))
 	    temp=doc.xpath("temperature/@value")[0]
-	    return render_template("temperatura.html",ciudad=ciudad,temperatura=temp)
+	    return render_templat("temperatura.html",ciudad=ciudad,temperatura=temp)
     else:
         return render_template("temperatura.html",ciudad=ciudad,error=True)
 
 port=os.environ["PORT"]
-app.run('0.0.0.0',int(port), debug=True)
+app.run('0.0.0.0',  int(port), debug=True)
