@@ -16,10 +16,11 @@ def temperatura():
     ciudad=request.form.get("ciudad")
     payload = {'q': ciudad, 'mode': 'xml','units':'metric','APPID':key}
     r=requests.get('http://api.openweathermap.org/data/2.5/weather',params=payload)
+    print(r.url)
     if r.status_code == 200:
 	    doc = etree.fromstring(r.text.encode ('utf-8'))
 	    temp=doc.xpath("temperature/@value")[0]
-	    return render_templat("temperatura.html",ciudad=ciudad,temperatura=temp)
+	    return render_template("temperatura.html",ciudad=ciudad,temperatura=temp)
     else:
         return render_template("temperatura.html",ciudad=ciudad,error=True)
 
